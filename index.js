@@ -10,7 +10,21 @@ var server = app.listen(3003, function() {
     var port = server.address().port
 
     console.log("Example app listening at http://%s:%s", host, port);
-    mySqlConnection.executeGenericSelect('ac');
+    // mySqlConnection.executeGenericSelect({
+    //     table: 't1',
+    //     sortColumn: '_col1',
+    //     debug: true,
+    //     sortOrder: mySqlConnection.SORTORDER.DESC
+    // }).then((results) => { console.log(results); });
+
+    mySqlConnection.executeGenericInsert({
+        table: 't1',
+        values: {
+            _col1: '31',
+            _col2: '32',
+            _col3: '33'
+        }
+    }).then((results) => { console.log(results); });
 })
 
 app.get('/', (req, res) => {

@@ -17,14 +17,23 @@ var server = app.listen(3003, function() {
     //     sortOrder: mySqlConnection.SORTORDER.DESC
     // }).then((results) => { console.log(results); });
 
-    mySqlConnection.executeGenericInsert({
+    // mySqlConnection.executeGenericInsert({
+    //     table: 't1',
+    //     values: {
+    //         _col1: '31',
+    //         _col2: '32',
+    //         _col3: '33'
+    //     }
+    // }).then((results) => { console.log(results); });
+    mySqlConnection.executeGenericUpdate({
         table: 't1',
         values: {
-            _col1: '31',
-            _col2: '32',
-            _col3: '33'
-        }
-    }).then((results) => { console.log(results); });
+            _col1: '-1'
+        },
+        condition: '`id`=3'
+    }).then((results) => {
+        console.log('update', results);
+    });
 })
 
 app.get('/', (req, res) => {
